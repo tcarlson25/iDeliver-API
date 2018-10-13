@@ -69,6 +69,40 @@ router.get('/:id', (req, res) => {
 });
 
 
+// Get all Orders for User
+router.get('/user/:id', (req, res) => {
+  res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+  var responseJson = {
+    "code": 0,
+    "message": '',
+    "data": []
+  }
+
+  var getDoc = collection.where('user_id', '==', req.params.id).get().then(snapshot => {
+      var docs = [];
+      snapshot.forEach(doc => {
+        order = doc.data();
+        order["id"] = doc.id;
+        docs.push(order);
+      });
+      if (!Array.isArray(docs) || !docs.length) {
+        responseJson.message = 'No orders found for user.';
+      } else {
+        responseJson.message = 'Orders successfully found.';
+      }
+      responseJson.code = 200;
+      responseJson.data = docs;
+      res.json(responseJson);
+      return responseJson.message;
+  }).catch(err => {
+    responseJson.code = 500;
+    responseJson.message = 'Could not get orders: ' + err;
+    res.json(responseJson);
+    return responseJson.message;
+  });
+});
+
+
 // Create an Order
 router.post('/', (req, res) => {
   var responseJson = {
