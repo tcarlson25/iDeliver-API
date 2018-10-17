@@ -9,7 +9,6 @@ var collection = db.collection('order');
 
 // Get all orders
 router.get('/', (req, res) => {
-  res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
   var responseJson = {
     "code": 0,
     "message": '',
@@ -39,7 +38,6 @@ router.get('/', (req, res) => {
 
 // Get an order by id
 router.get('/:id', (req, res) => {
-  res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
   var responseJson = {
     "code": 0,
     "message": '',
@@ -71,7 +69,6 @@ router.get('/:id', (req, res) => {
 
 // Get all Orders for User
 router.get('/user/:id', (req, res) => {
-  res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
   var responseJson = {
     "code": 0,
     "message": '',
