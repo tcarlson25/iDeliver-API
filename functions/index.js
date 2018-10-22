@@ -7,5 +7,6 @@ admin.initializeApp(functions.config().firebase);
 
 app.use('/user', require('./routes/user.js'));
 app.use('/order', require('./routes/order.js'));
+app.use('/pad', require('./routes/pad.js'));
 
 exports.app = functions.https.onRequest(app);
