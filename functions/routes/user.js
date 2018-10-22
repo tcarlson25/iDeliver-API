@@ -48,7 +48,7 @@ router.post('/', (req, res) => {
   }
 
   var body = req.body;
-  body['pad_location'] = null;
+  body['pad_id'] = null;
 
   var data = JSON.parse(JSON.stringify(body));
   delete data['id'];
