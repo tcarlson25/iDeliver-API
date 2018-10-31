@@ -9,7 +9,6 @@ var collection = db.collection('user');
 
 // Get a user by id (username)
 router.get('/:id', (req, res) => {
-  res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
   var responseJson = {
     "code": 0,
     "message": '',
