@@ -9,5 +9,6 @@ app.use('/user', require('./routes/user.js'));
 app.use('/order', require('./routes/order.js'));
 app.use('/pad', require('./routes/pad.js'));
 app.use('/datapoint', require('./routes/datapoint.js'));
+app.use('/drone', require('./routes/drone.js'));
 
 exports.app = functions.https.onRequest(app);
